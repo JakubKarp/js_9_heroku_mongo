@@ -1,0 +1,23 @@
+{
+  "name": "js_9_heroku_mongo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JakubKarp/js_9_heroku_mongo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JakubKarp/js_9_heroku_mongo/issues"
+  },
+  "homepage": "https://github.com/JakubKarp/js_9_heroku_mongo#readme",
+  "dependencies": {
+    "mongoose": "^4.13.9"
+  }
+}
