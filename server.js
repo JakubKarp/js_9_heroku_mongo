@@ -1,4 +1,54 @@
-//Całość:  
+
+
+//inaczej, czyli po mojemu
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+var fs = require('fs');
+
+
+
+app.use(bodyParser.urlencoded({extended: true}));
+app.set('view engine', 'ejs')
+var db
+
+var port = process.env.PORT || 3000;
+
+mongoose.connect('mongodb://kuba:ku22@ds159187.mlab.com:59187/first_database_mongo', {useMongoClient: true}, (err, database) => {
+    if (err) return console.log(err)
+    db = database
+    app.listen(port, () => {
+    console.log('listening on 3000')
+  })
+});
+
+
+app.get('/', (req, res) => {
+    db.collection('quotes').find().toArray((err, result) => {
+      if (err) return console.log(err)
+     
+      res.render('index.ejs', {quotes: result})
+    })
+  });
+
+
+app.post('/quotes', (req, res) => {
+    db.collection('quotes').save(req.body, (err, result) => {
+        if (err) return console.log(err)
+
+    console.log('saved to database')
+    res.redirect('/')
+    })
+})
+
+
+
+
+//Całość:  (z ćwiczenia Kodilla)
+
+/*
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -91,6 +141,7 @@ const findSpecificRecord = function() {
     })
 }
 
+
 const updadeUserPassword = function() {
     // update user password
     return User.findOne({ username: 'Kenny_the_boy' })
@@ -146,6 +197,8 @@ const findBennyAndRemove = function() {
         });
 }
 
+
+
 Promise.all([kenny.save(), mark.save(), benny.save()])
     .then(findAllUsers)
     .then(findSpecificRecord)
@@ -157,5 +210,6 @@ Promise.all([kenny.save(), mark.save(), benny.save()])
     .catch(console.log.bind(console))
 
 
+*/
 
 

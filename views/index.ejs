@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>First Heroku App</title>
+  
+</head>
+<body> 
+        
+    <div >    
+        <h1>MongoDB and Express WELCOME YOU!!!</h1> 
+        <h2>We are served by Heroku</h2>
+
+        <ul class="quotes">
+        <% for(var i=0; i<quotes.length; i++) {%>
+            <li class="quote">
+            <span><%= quotes[i].name %></span>
+            <span><%= quotes[i].quote %></span>
+            </li>
+        <% } %>
+        </ul>
+
+        <form action="/quotes" method="POST">
+            <input type="text" placeholder="name" name="name">
+            <input type="text" placeholder="quote" name="quote">
+            <button type="submit">Submit</button>
+        </form>
+    </div>    
+</body>
+</html>
