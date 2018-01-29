@@ -20,6 +20,14 @@ mongoose.connect('mongodb://kuba:ku22@ds159187.mlab.com:59187/first_database_mon
           res.render('index.ejs', {quotes: result})
         })
       });
+      app.post('/quotes', (req, res) => {
+        db.collection('quotes').save(req.body, (err, result) => {
+            if (err) return console.log(err)
+    
+        console.log('saved to database')
+        res.redirect('/')
+        })
+    })  
 });
 
 
