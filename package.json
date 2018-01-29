@@ -1,12 +1,11 @@
 {
   "name": "js_9_heroku_mongo",
   "version": "1.0.0",
-  "description": "",
+  "description": "mymongoherokuapp",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
-     
   },
   "repository": {
     "type": "git",
@@ -20,13 +19,18 @@
   },
   "homepage": "https://github.com/JakubKarp/js_9_heroku_mongo#readme",
   "dependencies": {
-    "mongoose": "^4.13.9"
-  },
-  "devDependencies": {
+    "mongoose": "^4.13.9",
     "body-parser": "^1.18.2",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "mongodb": "^3.0.1",
+  },
+  "devDependencies": {
+    
     "nodemon": "^1.14.11"
+  },
+  "engines": {
+    "node": "6.10.3"
+    
   }
 }
