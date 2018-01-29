@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-
+const mongoose = require('mongoose');
 
 
 app.set('view engine', 'ejs')
@@ -8,15 +8,20 @@ app.set('view engine', 'ejs')
 
 var port = process.env.PORT || 3000;
 
+mongoose.connect('mongodb://kuba:ku22@ds159187.mlab.com:59187/first_database_mongo', {useMongoClient: true}, (err, db) => {
+    if (err) return console.log(err)
+    app.listen(port, () => {
+        console.log("listening on", port)
+    })
+    app.get('/', (req, res) => {
+        db.collection('quotes').find().toArray((err, result) => {
+          if (err) return console.log(err)
+         
+          res.render('index.ejs', {quotes: result})
+        })
+      });
+});
 
 
 
-app.get('/', (req, res) => {
-    
-    res.render('helo.ejs')
-
-  });
-
-  app.listen(port, () => {
-    console.log('listening on 3000')
-  })
+  
